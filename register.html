@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Registration Page</title>
+</head>
+<body>
+    <div class="container">
+        <img src="/images/logo.png" alt="Site Logo" class="logo">
+        <div class="form">
+        <form id="registrationForm">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="confirmPassword">Confirm Password:</label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+            <label for="userType">I am a:</label><br>
+            <select id="userType" name="userType" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="landlord">Landlord</option>
+                <option value="tenant">Tenant</option>
+            </select><br>
+
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="/">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+            
+            // Collect form data
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const userType = document.getElementById('userType').value;
+
+            // Validate password confirmation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Send a POST request to the server for registration
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                    role: userType // Send user type
+                })
+            })
+            .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.message); });
+            }
+            return response.json();
+            })
+            .then(data => {
+                alert(data.message); // Show server response
+                if (data.message === "User registered successfully") {
+                    // Optionally redirect to login page after successful registration
+                    window.location.href = '/';
+                }
+            })
+            .catch(error => {
+                alert("Error: " + error.message); // Show error message
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - EasyRent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/auth.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo-section">
+            <h1>EasyRent</h1>
+            <img src="/images/shapeee.png" alt="House Icon" class="logo-icon">
+        </div>
+
+        <div class="auth-form">
+            <h2>Create Account</h2>
+            <form id="registrationForm" method="POST" action="/verify-recaptcha">
+                <div class="form-group">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-group">
+                    <select name="userType" id="userType" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="landlord">Landlord</option>
+                        <option value="tenant">Tenant</option>
+                    </select>
+                </div>
+
+                
+                <div class="g-recaptcha" data-sitekey="6LfD5pUqAAAAAIIVDm9229-MAWOg7MtiDXs0lvTK"></div>
+
+                <button type="submit" class="auth-button">Register</button>
+            </form>
+            <div class="auth-links">
+                <p>Already have an account? <a href="/">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Prevent form submission if reCAPTCHA is not solved
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                event.preventDefault();
+                alert('Please complete the reCAPTCHA.');
+            }
+        });
+    </script>
+</body>
+</html>

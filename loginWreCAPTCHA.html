@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> <!-- Load reCAPTCHA -->
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-placeholder">
+            <h1 style="font-family: 'Montserrat', sans-serif; color: #800080;">EasyRent</h1>
+            <img src="/images/shapeee.png" alt="House Icon" width="80" height="80">
+        </div>
+
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="loginForm" method="POST" action="/verify-recaptcha">
+                <input type="text" name="username" id="username" placeholder="Email" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                
+                <!-- reCAPTCHA widget -->
+                <div class="g-recaptcha" data-sitekey="6LfD5pUqAAAAAIIVDm9229-MAWOg7MtiDXs0lvTK"></div>
+                
+                <button type="submit">Log In</button>
+            </form>
+
+            <div class="additional-links">
+                <a href="/register">Register Account</a> | <a href='/resetPassword'>Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Prevent form submission if reCAPTCHA is not solved
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                event.preventDefault();
+                alert('Please complete the reCAPTCHA.');
+            }
+        });
+    </script>
+</body>
+</html>

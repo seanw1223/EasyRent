@@ -1,0 +1,115 @@
+
+body, h1, button, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+body {
+    background-color: #f3f3f3; 
+    color: #800080; 
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white; 
+    color: #800080; 
+}
+
+.logo h1 {
+    font-size: 24px;
+}
+
+.profile-btn {
+    background-color: white; 
+    color: #800080; 
+    border: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.main-content {
+    padding: 30px;
+    text-align: center;
+}
+
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd; 
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background-color: white; 
+    color: #800080; 
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+.filter-section {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    gap: 10px;
+}
+
+.filters {
+    display: inline-flex;
+}
+
+.filter {
+    background-color: white; 
+    color: #800080; 
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+}
+
+.filter-btn {
+    background-color: #800080; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+}

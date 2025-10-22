@@ -1,0 +1,24 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Our web property rental site connects landlords and tenants. Tenants can browse properties for rent or sale by distance, price, and type, leave reviews, and message landlords. Landlords can list their properties with descriptions, photos, and rental terms.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "firebase": "^10.14.1",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.0",
+    "node": "^20.18.0"
+  }
+}
